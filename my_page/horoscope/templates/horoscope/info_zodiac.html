@@ -5,14 +5,25 @@
     <title>Гороскоп для {{ sign|capfirst }}</title>
 </head>
 <body>
-<h1>Приложение Гороскоп</h1>
-<p>{{ description_zodiac|title|safe }}</p>
+
+    <h1>Приложение Гороскоп</h1>
+
+
+    {% if  description is None %}
+
+        <h2>Не верный знак зодиака {{ sign|upper }}</h2>
+
+
+    {% else %}
+        <h2>{{ description|title|safe }}</h2>
+    {% endif %}
+
 
     <p>Число {{ my_int|add:'99999' }}</p>
     <p>Число {{ my_float }}</p>
     <p>Список {{ my_list|join:'-' }}</p>
     <p>Кортеж {{ my_tuple }}</p>
-    <p>Словарь {{ my_dict }}, ключ -  {{ my_dict.name }}</p>
+    <p>Словарь {{ my_dict }}, ключ - {{ my_dict.name }}</p>
     <p>Дата {{ my_date|date:"D d M Y" }}</p>
     <p>Класс {{ my_class }} age {{ my_class.age }}</p>
     <p>def {{ my_def|default:'Пусто' }} </p>

@@ -84,7 +84,7 @@ class Person:
 def get_info_about_zodiac_sign(request, sign: str):
     description = signs_dictionary.get(sign, None)
     data = {
-        'description_zodiac': description,
+        'description': description,
         'sign': sign,
         'my_list': [1, 2, 3],
         'my_tuple': (1, 2, 3, 4),
