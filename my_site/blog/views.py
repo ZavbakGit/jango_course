@@ -15,9 +15,15 @@ def posts(request):
 
 def get_info_about_post(request, name_post):
     # posts/лорлрло
-    return HttpResponse(f"Информация о посте с именем {name_post}")
+    # return HttpResponse(f"Информация о посте с именем {name_post}")
+    data = {
+        'name_post': name_post
+    }
+    return render(request, 'blog/detail_by_name.html', context=data)
 
 
 def get_info_about_by_number(request, number_post: int):
-    # posts/5
-    return HttpResponse(f"Информация о посте под номером {number_post}")
+    data = {
+        'number_post': number_post
+    }
+    return render(request, 'blog/detail_by_number.html', context=data)

@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.template.loader import render_to_string
 from django.urls import reverse
 from datetime import datetime as dt, datetime
+from dataclasses import dataclass
 
 signs_dictionary = {
     "aries": "Овен - первый знак зодиака, планета Марс (с 21 марта по 20 апреля).",
@@ -71,10 +72,30 @@ def get_info_by_date(request, month: int, day: int):
         return HttpResponseNotFound(f"Не правильная дата")
 
 
+@dataclass
+class Person:
+    name: str
+    age: int
+
+    def __str__(self):
+        return f'This is {self.name}, age {self.age}'
+
+
 def get_info_about_zodiac_sign(request, sign: str):
-    # description = signs_dictionary.get(sign, None)
-    response = render_to_string('horoscope/info_zodiac.html')
-    return render(request, 'horoscope/info_zodiac.html')
+    description = signs_dictionary.get(sign, None)
+    data = {
+        'description_zodiac': description,
+        'sign': sign.title(),
+        'my_list': [1, 2, 3],
+        'my_tuple': (1, 2, 3, 4),
+        'my_dict': {'name': 'Alex', 'age': 40},
+        'my_int': 555,
+        'my_float': 10.52,
+        'my_date': datetime.now(),
+        'my_class': Person('Nick', 50)
+
+    }
+    return render(request, 'horoscope/info_zodiac.html', context=data)
     # if description:
     #     return HttpResponse(f'<h2>{description}</h2>')
     # else:
