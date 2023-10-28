@@ -88,10 +88,6 @@ def get_info_about_zodiac_sign(request, sign: str):
         'sign': sign,
     }
     return render(request, 'horoscope/info_zodiac.html', context=data)
-    # if description:
-    #     return HttpResponse(f'<h2>{description}</h2>')
-    # else:
-    #     return HttpResponseNotFound(f"Неизвестный знак зодиака - {sign}")
 
 
 def get_info_about_zodiac_sign_by_number(request, sign: int):
@@ -149,17 +145,3 @@ def index(request):
         'zodiacs': list(signs_dictionary)
     }
     return render(request, 'horoscope/index.html', context=data)
-
-    # list_signs = list(signs_dictionary)
-    #
-    # li_elements = ''
-    # for sign in list_signs:
-    #     redirect_url = reverse("horoscope-name", args=[sign])
-    #     li_elements += f"<li><a href='{redirect_url}'>{sign.title()}</a></li>"
-    #
-    # response = f"""
-    # <ol>
-    #     {li_elements}
-    # </ol>
-    # """
-    # return HttpResponse(response)

@@ -6,11 +6,13 @@
 
 {% block content %}
 
+    {% include 'includes/navbar.html'%}
+
     <h1>Приложение Гороскоп</h1>
 
     {% if  description is None %}
 
-        <h2>Не верный знак зодиака {{ sign|upper }}</h2>
+        <h>Не верный знак зодиака {{ sign|upper }}</h>
 
 
     {% else %}
