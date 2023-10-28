@@ -9,13 +9,9 @@
     <ul>
 
         {% for zodiac in zodiacs %}
-
-            {% if forloop.first %}
-                <li><b>{{ forloop.counter }} {{ zodiac|title }}</b></li>
-            {% else %}
-                <li>{{ forloop.counter }} {{ zodiac|title }}</li>
-            {% endif %}
-
+            <a href="{% url 'horoscope-name' zodiac %}">
+                <li>{{ zodiac|title }}</li>
+            </a>
         {% endfor %}
     </ul>
 
