@@ -86,15 +86,6 @@ def get_info_about_zodiac_sign(request, sign: str):
     data = {
         'description': description,
         'sign': sign,
-        'my_list': [1, 2, 3],
-        'my_tuple': (1, 2, 3, 4),
-        'my_dict': {'name': 'Alex', 'age': 40},
-        'my_int': 555,
-        'my_float': 10.52,
-        'my_date': datetime.now(),
-        'my_class': Person('Nick', 50),
-        'my_def': []
-
     }
     return render(request, 'horoscope/info_zodiac.html', context=data)
     # if description:
