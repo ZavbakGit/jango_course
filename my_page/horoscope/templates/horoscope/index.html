@@ -1,11 +1,31 @@
 {% extends 'base.html' %}
 
+{% load static %}
+{% load my_filter %}
+
+{% block css_additional %}
+    <link rel="stylesheet" href=" {% static 'horoscope/css/index.css' %}">
+    <link rel="stylesheet" href=" {% static 'horoscope/css/info.css' %}">
+{% endblock %}
+
+
 {% block title %}
     Меню
 {% endblock %}
 
+
+
 {% block content %}
-    {% include 'includes/navbar.html'%}
+    <h1>Приложение гороскоп</h1>
+
+    {% for i in 2|times %}
+        <p>Hello</p>
+    {% endfor %}
+
+    {% for c in 3|filter_range:8 %}
+        <p>{{ c }}</p>
+    {% endfor %}
+
 
     <ul>
         {% for zodiac in zodiacs %}
@@ -15,7 +35,6 @@
         {% endfor %}
     </ul>
 
-    {% include 'includes/navbar.html'%}
 
 {% endblock %}
 
