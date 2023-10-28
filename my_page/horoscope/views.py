@@ -154,16 +154,21 @@ def get_zodiac_type(request, element_horoscope: str):
 
 
 def index(request):
-    list_signs = list(signs_dictionary)
+    data = {
+        'zodiacs': list(signs_dictionary)
+    }
+    return render(request, 'horoscope/index.html', context=data)
 
-    li_elements = ''
-    for sign in list_signs:
-        redirect_url = reverse("horoscope-name", args=[sign])
-        li_elements += f"<li><a href='{redirect_url}'>{sign.title()}</a></li>"
-
-    response = f"""
-    <ol>
-        {li_elements}
-    </ol>
-    """
-    return HttpResponse(response)
+    # list_signs = list(signs_dictionary)
+    #
+    # li_elements = ''
+    # for sign in list_signs:
+    #     redirect_url = reverse("horoscope-name", args=[sign])
+    #     li_elements += f"<li><a href='{redirect_url}'>{sign.title()}</a></li>"
+    #
+    # response = f"""
+    # <ol>
+    #     {li_elements}
+    # </ol>
+    # """
+    # return HttpResponse(response)
