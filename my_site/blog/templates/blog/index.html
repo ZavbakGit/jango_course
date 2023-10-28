@@ -1,11 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Home</title>
-</head>
-<body>
-    <h2>Главная страница</h2>
-    <h4>Добро пожаловать в мой блог</h4>
-</body>
-</html>
+{% extends 'blog/base.html' %}
+
+{% block content %}
+
+    <div class="leftcolumn">
+
+        {% for item in posts %}
+            <div class="card">
+                <h2>{{ item.title }}</h2>
+                <h5>{{ item.description }}, {{ item.date }}</h5>
+                <div class="fakeimg" style="height:200px;">Image</div>
+                <p>Some text..</p>
+                <p>{{ item.content }}</p>
+            </div>
+        {% endfor %}
+
+
+    </div>
+{% endblock %}
