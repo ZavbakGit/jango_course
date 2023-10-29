@@ -1,5 +1,6 @@
 # my_django_course
 
+Закончил 4.4  
 Закончил 3.12
 Закончил 3.8
 Закончил 3.7
@@ -18,6 +19,13 @@
 Закончил 1.7
 
 https://stepik.org/lesson/681498/step/1?unit=680277
+
+
+BD
+
+manage.py makemigrations
+manage.py migration
+
 
 
 pip install Django - установка django
