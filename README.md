@@ -1,5 +1,6 @@
 # my_django_course
 
+Закончил 4.5  
 Закончил 4.4  
 Закончил 3.12
 Закончил 3.8
@@ -23,8 +24,32 @@ https://stepik.org/lesson/681498/step/1?unit=680277
 
 BD
 
-manage.py makemigrations
-manage.py migration
+manage.py makemigrations создать  не забыть добавить в INSTALLED_APPS приложение
+manage.py showmigrations посмотреть
+manage.py migrate применить
+manage.py migrate posts 0003 откатить, posts - название приложения, 003 номер миграции 
+
+#Работа с db
+manage.py shell запуск консоли 
+
+Создание записи
+from movie_app.models import Movie
+a = Movie(name = 'Matrix', rating = 85)
+a.save()
+
+from django.db import connection
+connection - посмотреть какой sql применялся
+
+Пакет ipython - подсказки в shell
+
+django-extensions - смотреть запросы
+
+INSTALLED_APPS = (
+    ...
+    'django_extensions',
+)
+
+python manage.py shell_plus --print-sql - запуск расширеного shell
 
 
 
