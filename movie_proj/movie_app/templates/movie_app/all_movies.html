@@ -6,7 +6,11 @@
     <h2>Список всех фильмов</h2>
     <ul>
         {% for movie in movies %}
-            <li><a href="{{ movie.get_url }}">{{ movie.name }}</a>, {{ movie.year|default:'Неизвестен'}}</li>
+            <li><a href="{{ movie.get_url }}">{{ movie.name }}</a>,
+                    {{ movie.rating }},
+                    {{ movie.budget }},
+                    {{ movie.year|default:'Неизвестен'}}
+            </li>
         {% endfor %}
     </ul>
 {% endblock %}
