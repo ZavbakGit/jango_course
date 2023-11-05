@@ -1,10 +1,15 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Movie
-from django.db.models import F, Min, Max, Avg, Count, Sum
+from django.db.models import F, Min, Max, Avg, Count, Sum, Value
 
 
 def show_all_movie(request):
-    movies = Movie.objects.order_by(F('year').desc(nulls_first=True))
+    # movies = Movie.objects.order_by(F('year').desc(nulls_first=True))
+    movies = Movie.objects.annotate(
+        field_true=Value(True),
+        field_false=Value(False),
+        buget_100=F('budget') + 100,
+    )
     agg = movies.aggregate(Avg('budget'), Max('rating'), Min('rating'))
     # for movie in movies:
     #     movie.save()

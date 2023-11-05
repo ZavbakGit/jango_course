@@ -1,5 +1,6 @@
 # my_django_course
 
+Закончил 4.18 
 Закончил 4.14 
 Закончил 4.13 
 Закончил 4.12 
@@ -33,6 +34,9 @@ manage.py makemigrations создать  не забыть добавить в I
 manage.py showmigrations посмотреть
 manage.py migrate применить
 manage.py migrate posts 0003 откатить, posts - название приложения, 003 номер миграции 
+
+
+pip install django-debug-toolbar
 
 #Работа с db
 manage.py shell запуск консоли 
