@@ -1,5 +1,6 @@
 # my_django_course
 
+Закончил 5.9
 Закончил 4.18 
 Закончил 4.14 
 Закончил 4.13 
@@ -27,16 +28,20 @@
 
 https://stepik.org/lesson/681498/step/1?unit=680277
 
+python manage.py createsuperuse zavbak 123
+
+pip install django-debug-toolbar
+
 
 BD
 
-manage.py makemigrations создать  не забыть добавить в INSTALLED_APPS приложение
+создать  не забыть добавить в INSTALLED_APPS приложение
 manage.py showmigrations посмотреть
 manage.py migrate применить
 manage.py migrate posts 0003 откатить, posts - название приложения, 003 номер миграции 
 
 
-pip install django-debug-toolbar
+
 
 #Работа с db
 manage.py shell запуск консоли 
