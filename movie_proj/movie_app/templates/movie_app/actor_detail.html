@@ -1,0 +1,30 @@
+{% extends 'movie_app/base.html' %}
+
+{% block title %}
+    {{ actor.first_name }} {{ actor.last_name }}
+{% endblock %}
+
+{% block content %}
+    <h2>
+        {% if actor.gender == actor.MALE %}
+            Актер
+        {% else %}
+             Актриса
+        {% endif %}
+    </h2>
+
+    <h2>Имя: {{ actor.first_name }}</h2>
+    <h2>Фамилия: {{ actor.last_name }}</h2>
+    <h2>Пол: {{ actor.gender }}</h2>
+    <hr>
+    <h3>Список фильмов</h3>
+    <ul>
+        {% for movie in actor.movies.all %}
+            <li><a href="{{ movie.get_url }}">{{ movie.name }}</a>,
+                    {{ movie.rating }},
+                    {{ movie.budget }},
+                    {{ movie.year|default:'Неизвестен'}}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

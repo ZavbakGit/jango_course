@@ -7,6 +7,25 @@
     <h3>Рейтинг - {{ movie.rating }}%</h3>
     <h3>Бюджет - {{ movie.budget }}</h3>
     <h3>Год - {{ movie.year|default:'Неизвестен' }}</h3>
+    <hr>
+    <h2>Информация о режиссере</h2>
+    <h3>Имя: {{ movie.director.first_name }}</h3>
+    <h3>Фамилия: {{ movie.director.last_name }}</h3>
+    <h3>Почта: {{ movie.director.director_email }}</h3>
+    <hr>
+    <h2>Список актёров</h2>
+    <ul>
+         {% for item in movie.actors.all %}
+            <li><a href="{{ item.get_url }}">
+                {% if item.gender == item.MALE %}
+                   Актер {{ item.first_name }} {{ item.last_name}}
+                 {% else %}
+                    Актриса {{ item.first_name }} {{ item.last_name}}
+                 {% endif %}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
 
 
 {% endblock %}

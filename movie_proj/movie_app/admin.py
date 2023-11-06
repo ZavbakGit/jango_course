@@ -1,9 +1,17 @@
 from django.contrib import admin, messages
-from .models import Movie
+from .models import Movie, Director, Actor, DressingRoom
 from django.db.models import QuerySet
 
-
 # Register your models here.
+
+admin.site.register(Director)
+
+
+# admin.site.register(DressingRoom)
+
+
+# admin.site.register(Actor)
+
 
 class RatingFilter(admin.SimpleListFilter):
     title = 'Фильтр по рейтингу'
@@ -30,6 +38,17 @@ class RatingFilter(admin.SimpleListFilter):
                 return queryset.filter(rating__gt=80)
 
 
+@admin.register(DressingRoom)
+class DressingRoomAdmin(admin.ModelAdmin):
+    list_display = ['floor', 'number', 'actor']
+
+
+@admin.register(Actor)
+class ActorAdmin(admin.ModelAdmin):
+    list_per_page = 10
+    list_display = ['id', 'first_name', 'last_name']
+
+
 @admin.register(Movie)
 class MovieAdmin(admin.ModelAdmin):
     # fields = ['name', 'rating']
@@ -37,17 +56,17 @@ class MovieAdmin(admin.ModelAdmin):
 
     # readonly_fields = ['year']
 
-
     # Для автозаписи
     prepopulated_fields = {'slug': ('name',)}
 
-    list_display = ['name', 'rating', 'year', 'budget', 'currency', 'rating_status']
-    list_editable = ['rating', 'year', 'budget', 'currency']
+    list_display = ['name', 'rating', 'year', 'director', 'budget', 'rating_status', 'id']
+    list_editable = ['rating', 'year', 'director', 'budget']
     ordering = ['rating', '-name']
     list_per_page = 10
     actions = ['set_dollars', 'set_euro']
     search_fields = ['name', 'rating']
     list_filter = ['name', 'currency', RatingFilter]
+    filter_horizontal = ['actors']
 
     @admin.display(ordering='rating', description='Статус')
     def rating_status(self, mov: Movie):
