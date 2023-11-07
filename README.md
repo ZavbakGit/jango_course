@@ -1,5 +1,6 @@
 # my_django_course
 
+Закончил 8.1
 Закончил 7.6
 Закончил 7.2
 Закончил 6.7
@@ -38,9 +39,9 @@ pip install django-debug-toolbar
 
 BD
 
-создать  не забыть добавить в INSTALLED_APPS приложение
+python manage.py makemigrations создать  не забыть добавить в INSTALLED_APPS приложение
 manage.py showmigrations посмотреть
-manage.py migrate применить
+python manage.py migrate применить
 manage.py migrate posts 0003 откатить, posts - название приложения, 003 номер миграции 
 
 
