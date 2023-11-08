@@ -4,6 +4,7 @@ from django.http import HttpResponseRedirect
 from .forms import FeedBackForm
 from .models import Feedback
 from django.views import View
+from django.views.generic.base import TemplateView
 
 
 class FeedBackView(View):
@@ -25,9 +26,34 @@ class FeedBackView(View):
         })
 
 
-class DoneView(View):
-    def get(self, request):
-        return render(request, 'feedback/done.html')
+class DoneView(TemplateView):
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['test'] = 'Ура'
+        return context
+
+    template_name = 'feedback/done.html'
+
+
+class DetailFeedBack(TemplateView):
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        feedback = get_object_or_404(Feedback, id=kwargs['id_fb'])
+        context['feedback'] = feedback
+        return context
+
+    template_name = 'feedback/detail_feedback.html'
+
+
+class ListFeedBack(TemplateView):
+    def get_context_data(self, **kwargs):
+        feedbacks = Feedback.objects.all()
+
+        context = super().get_context_data(**kwargs)
+        context['feedbacks'] = feedbacks
+        return context
+
+    template_name = 'feedback/list_feedback.html'
 
 
 class FeedBackUpdateView(View):

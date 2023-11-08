@@ -1,0 +1,17 @@
+{% extends 'feedback/base.html' %}
+
+{% block title %}
+    Список
+{% endblock %}
+
+{% block content %}
+    <h2>Список отзывав</h2>
+    <ul>
+        {% for item in feedbacks %}
+            <li><a href="{{ item.get_url }}">
+                {{ item.feedback }}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
